@@ -75,12 +75,8 @@ function newGame() {
 	    setGameElements();
 
 	    playerNameElem.innerHTML = player.name;
-	    setGamePoints(); /* ta funkcja jeszcze nie powstała */ /* tu byla funkacja zakodowana, ale juz nie jest */
+	    setGamePoints();
   }
-}
-
-function playerPick(playerPick) {
-    console.log(playerPick);
 }
 
 function getComputerPick() {
@@ -93,13 +89,6 @@ var playerPickElem = document.getElementById('js-playerPick'),
     playerResultElem = document.getElementById('js-playerResult'),
     computerResultElem = document.getElementById('js-computerResult');
 
-function playerPick(playerPick) {
-    var computerPick = getComputerPick();
-
-    playerPickElem.innerHTML = playerPick;
-    computerPickElem.innerHTML = computerPick;
-}
-
 function checkRoundWinner(playerPick, computerPick) {
   playerResultElem.innerHTML = computerResultElem.innerHTML = '';
 
@@ -107,8 +96,8 @@ function checkRoundWinner(playerPick, computerPick) {
 
     if (playerPick == computerPick) {
         winnerIs = 'noone';
-        playerResultElem.innerHTML = ":-0 Remis!";
-        computerResultElem.innerHTML = ":-O Remis!";
+        playerResultElem.innerHTML = "remis";
+        computerResultElem.innerHTML = "remis";
     } else if (
         (computerPick == 'kamień' &&  playerPick == 'nożyce') ||
         (computerPick == 'nożyce' &&  playerPick == 'papier') ||
@@ -151,8 +140,3 @@ function endGame() {
     }
 	setGameElements();
 }
-
-
-
-
-
