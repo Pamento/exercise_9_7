@@ -89,10 +89,12 @@ var playerPickElem = document.getElementById('js-playerPick'),
     playerResultElem = document.getElementById('js-playerResult'),
     computerResultElem = document.getElementById('js-computerResult');
 
-function checkRoundWinner(playerPick, computerPick) {
-  playerResultElem.innerHTML = computerResultElem.innerHTML = '';
+var winnerIs;
 
-  var winnerIs = 'player';
+function checkRoundWinner(playerPick, computerPick) {
+    playerResultElem.innerHTML = computerResultElem.innerHTML = '';
+
+    winnerIs = 'player';
 
     if (playerPick == computerPick) {
         winnerIs = 'noone';
@@ -105,6 +107,12 @@ function checkRoundWinner(playerPick, computerPick) {
 
         winnerIs = 'computer';
     }
+    setGamePoints();
+    scoreRoundWinner(playerPick, computerPick);
+    endGame();
+}
+
+function scoreRoundWinner(playerPick, computerPick) {
 
     if (winnerIs == 'player') {
         playerResultElem.innerHTML = "Wygrana!";
@@ -113,9 +121,11 @@ function checkRoundWinner(playerPick, computerPick) {
         computerResultElem.innerHTML = "Wygrana!";
         computer.score++;
     }
-setGamePoints();
-endGame();
 }
+
+
+
+
 
 function playerPick(playerPick) {
     var computerPick = getComputerPick();
