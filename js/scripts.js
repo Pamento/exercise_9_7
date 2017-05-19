@@ -99,20 +99,25 @@ var playerPickElem = document.getElementById('js-playerPick'),
 function checkRoundWinner(playerPick, computerPick) {
     playerResultElem.innerHTML = computerResultElem.innerHTML = '';
 
-    var winnerIs;
+    var winnerIs = gameArbiter(playerPick, computerPick)
+    scoreRoundWinner(winnerIs);
+    setGamePoints();
+    endGame();
+}
+
+function gameArbiter(playerPick, computerPick){
     if (playerPick === computerPick) {
-        winnerIs = 'noone';
+        return 'noone';
     } else if (
         (computerPick === 'kamień' &&  playerPick === 'nożyce') ||
         (computerPick === 'nożyce' &&  playerPick === 'papier') ||
         (computerPick === 'papier' &&  playerPick === 'kamień')) {
-        winnerIs = 'computer';
+        return 'computer';
     } else {
-        winnerIs ='player';
+       return 'player';
     }
-    scoreRoundWinner(winnerIs);
-    setGamePoints();
-    endGame();
+
+
 }
 
 function scoreRoundWinner(winnerIs) {
